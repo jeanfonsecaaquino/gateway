@@ -1,4 +1,4 @@
-# **Gateway**
+# **OndeTemLeito - Gateway**
 
 Este projeto tem como finalidade extrair os dados de status dos leitos de unidades hospitalares e sincronizar com a API responsável por gerir o mapeamento de disponibilidade.
 
