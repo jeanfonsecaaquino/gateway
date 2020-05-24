@@ -29,29 +29,3 @@ PV1|1|I|274SI^2803^A^307607^active^1302^HOSPITAL ESPERANCA S.A (BARRA D'OR)|L|||
 ORC|NW|0002600786|||IP||||20200508132200|||000124^545376^PACIENTE DE DADOS TESTE|||||||||FRAMOS.AGFA|||||||||
 OBR|1|0002600786||052782^RXPERNA^^0002600786^ESQUERDA - TESTE||20200508132200||20200508132200|||||teste|||||||||||CR|||||||||||||||||||||||||```
 
-
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
-
-## Usage
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
