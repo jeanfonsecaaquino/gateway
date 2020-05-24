@@ -1,0 +1,13 @@
+version: '2'
+services:
+  app:
+    image: gateway
+    volumes:
+      - /Users/jeanaquino/Projects/porFora:/usr/src/gateWay
+    environment:
+      - PATH_READER=/usr/src/gateWay/pra_rodar
+      - PATH_OK=/usr/src/gateWay/arquivos_ok
+      - PATH_ERROR=/usr/src/gateWay/arquivos_error
+      - ID_UNIDADE=1
+      - END_POINT=http://10.36.143.177:3111/position
+    mem_limit: 512m
