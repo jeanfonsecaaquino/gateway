@@ -49,7 +49,15 @@ services:
     mem_limit: 512m
 ````
 
- ### Exemplo:
+Uma vez editado, execute da raiz do projeto clonado o seguinte comando:
+
+```bash
+    sh docker/up.sh
+````
+
+Feito isto, o gateWay estara executando e sincronizando com a API os dados dos leitos.
+
+ ### Exemplo de configuração:
 
 Diretórios no máqina:
 
@@ -72,3 +80,14 @@ services:
       - END_POINT=http://10.36.143.177:3111/position
     mem_limit: 512m
 ````
+
+### Componentes utilizados
+
+Segue a lista de bibliotecas utilizadas na confecção, todas de código aberto:
+
+|-------------------
+| [chokidar](https://www.npmjs.com/package/chokidar)          
+| [cross-fetch](https://www.npmjs.com/package/cross-fetch)
+| [pipe-functions](https://www.npmjs.com/package/pipe-functions)
+| [simple-hl7](https://www.npmjs.com/package/simple-hl7)
+| [typescript](https://www.npmjs.com/package/typescript)
