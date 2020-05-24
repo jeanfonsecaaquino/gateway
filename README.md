@@ -27,7 +27,7 @@ Munido destas informações este extrator observa um diretório específico e ab
 
 ## Arquitetura da solução
 
-![alt text]((/assets/topologia.jpeg?raw=true))
+![alt text](/assets/topologia.jpeg?raw=true)
 
 ## Instalação
 
