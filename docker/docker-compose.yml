@@ -3,7 +3,7 @@ services:
   app:
     image: gateway
     volumes:
-      - /Users/jeanaquino/Projects/porFora:/usr/src/gateWay
+      - /Users/jeanaquino/Projects/adt:/usr/src/gateWay
     environment:
       - PATH_READER=/usr/src/gateWay/pra_rodar
       - PATH_OK=/usr/src/gateWay/arquivos_ok
