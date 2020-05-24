@@ -22,10 +22,13 @@ Segundo esta especificação as informações sobre o estado atual do paciente n
 
 Essas informações definem a posição de informações em um arquivo de padrão HL7 como o abaixo:
 
-```text
-MSH|^~\&|HIS AGFA|Agfa HealthCare|||20200508132518||ORM^O01|27|P|2.3|
-PID|1||005428506||CAMPOS DOS SANTOS^DULCINEA|UM NOME DE PACIENTE QUALQUER|19440924|F|||RUA MONCLARO MENA BARRETO^50^VILA VALQUEIRE^RIO DE JANEIRO^BRASIL^21330410||2124531230|21994415538||V|CATO^CATOLICO||||||RJ^RIO DE JANEIRO||||||||||||||||
-PV1|1|I|274SI^2803^A^307607^active^1302^HOSPITAL ESPERANCA S.A (BARRA D'OR)|L|||000124^ROGERIO VILLELA LEMOS|000124^ROGERIO VILLELA LEMOS|||||||||||0116491|||||||||||||||||||||||||20150710142700||||||||
-ORC|NW|0002600786|||IP||||20200508132200|||000124^545376^PACIENTE DE DADOS TESTE|||||||||FRAMOS.AGFA|||||||||
-OBR|1|0002600786||052782^RXPERNA^^0002600786^ESQUERDA - TESTE||20200508132200||20200508132200|||||teste|||||||||||CR|||||||||||||||||||||||||```
 
+Munido destas informações este extrator observa um diretório específico e absorve o status do leito em tempo real, informando sempre que um leito for disponibilizado, ou ocupado.
+
+## Arquitetura da solução
+
+![alt text]((https://github.com/[jeanfonsecaaquino]/[gateway]/asset/[master]/topologia.jpg?raw=true))
+
+## Instalação
+
+Clone o projeto para um diretório qualquer
