@@ -28,3 +28,42 @@ Munido destas informações este extrator observa um diretório específico e ab
 ## Arquitetura da solução
 
 ![alt text](/assets/topologia.jpeg?raw=true)
+````yml
+version: '2'
+services:
+  app:
+    image: gateway
+    volumes:
+      - ${CAMINHO_LOCAL_DA_MAQUINA}:/usr/src/gateway
+    environment:
+      - PATH_READER=/usr/src/gateway/{$SUB_BASTA_DO_QUE_SERA_OBSERVADO}
+      - PATH_OK=/usr/src/gateway/{$SUB_BASTA_DOS_ARQUIVOS_PROCESSADOS}
+      - PATH_ERROR=/usr/src/gateway/{$SUB_BASTA_DOS_ARQUIVOS_COM_ERRO}
+      - ID_UNIDADE={$CODIGO_DA_UNIDADE_NA_API}
+      - END_POINT={$END_POINT}
+    mem_limit: 512m
+````
+
+ ### Exemplo:
+
+Diretórios no máqina:
+
+![alt text](/assets/caminhos.jpeg?raw=true)
+
+Configuração relativa
+
+````yml
+version: '2'
+services:
+  app:
+    image: gateway
+    volumes:
+      - /Users/jeanaquino/Projects/adt:/usr/src/gateWay
+    environment:
+      - PATH_READER=/usr/src/gateWay/pra_rodar
+      - PATH_OK=/usr/src/gateWay/arquivos_ok
+      - PATH_ERROR=/usr/src/gateWay/arquivos_error
+      - ID_UNIDADE=1
+      - END_POINT=http://10.36.143.177:3111/position
+    mem_limit: 512m
+````
