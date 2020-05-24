@@ -28,6 +28,11 @@ Munido destas informações este extrator observa um diretório específico e ab
 ## Arquitetura da solução
 
 ![alt text](/assets/topologia.jpeg?raw=true)
+
+## Instalação
+
+Após clonado, edite o arquivo [docker-compose.yml](/docker/docker-compose.yml) conforme abaixo:
+
 ````yml
 version: '2'
 services:
