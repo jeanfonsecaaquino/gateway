@@ -85,6 +85,7 @@ services:
 
 Segue a lista de bibliotecas utilizadas na confecção, todas de código aberto:
 
+| LIBS
 |-------------------
 | [chokidar](https://www.npmjs.com/package/chokidar)          
 | [cross-fetch](https://www.npmjs.com/package/cross-fetch)
