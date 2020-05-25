@@ -1,0 +1,13 @@
+version: '2'
+services:
+  app:
+    image: gateway
+    volumes:
+      - ${GATEWAY_PATH}:/usr/src/gateway_path
+    environment:
+      - PATH_READER=/usr/src/gateway_path/para_rodar
+      - PATH_OK=/usr/src/gateway_path/arquivos_ok
+      - PATH_ERROR=/usr/src/gateway_path/arquivos_error
+      - ID_UNIDADE=${ID_UNIDADE}
+      - END_POINT=${ENDPOINT}
+    mem_limit: 512m
