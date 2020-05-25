@@ -2,19 +2,14 @@ docker build -t gateway -f docker/Dockerfile .
 
 ID_UNIDADE=1
 
-export GATEWAY_PATH="/Users/jeanaquino/Projects/hospital"
+export GATEWAY_PATH="/Users/jeanaquino/Projects/bot_carga"
 export ENDPOINT="http://10.36.143.177:3111/position"
-
-#CRIANDO ENVS PARA UNIDADE
-export PATH_PARA_RODAR="${GATEWAY_PATH}/para_rodar"
-export PATH_OK="${GATEWAY_PATH}/arquivos_ok"
-export PATH_ERROR="${GATEWAY_PATH}/arquivos_error"
 export ID_UNIDADE="${ID_UNIDADE}"
 
 #CRIANDO DIRETORIOS CASO NAO EXISTAM
-mkdir -p $PATH_PARA_RODAR
-mkdir -p $PATH_OK
-mkdir -p $PATH_ERROR
+mkdir -p "${GATEWAY_PATH}/para_rodar"
+mkdir -p "${GATEWAY_PATH}/arquivos_ok"
+mkdir -p "${GATEWAY_PATH}/arquivos_error"
 
 #INICIANDO INSTANCIA
 docker-compose -f docker/docker-compose.yml -p gateway up -d

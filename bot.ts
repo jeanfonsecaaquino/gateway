@@ -2,7 +2,7 @@ const conf = require('./bot.json')
 const fs = require('fs')
 const cron = require('node-cron');
 
-// const adtFileActive = "./arquivos_ok/S208550202005081225IDENT_active.txt"
+// Dados de exemplo no Formato HL7 para processamento
 const adtFileActive:String = "MSH|^~\&|HIS AGFA|Agfa HealthCare|||20200508132518||ORM^O01|27|P|2.3|"
 + "\n" +
 "PID|1||005428506||CAMPOS DOS SANTOS^DULCINEA|VALERIANA SILVA CAMPOS|19440924|F|||RUA MONCLARO MENA BARRETO^50^VILA VALQUEIRE^RIO DE JANEIRO^BRASIL^21330410||2124531230|21994415538||V|CATO^CATOLICO||||||RJ^RIO DE JANEIRO||||||||||||||||" +
@@ -24,25 +24,20 @@ const adtFileInaActive:String = "MSH|^~\&|HIS AGFA|Agfa HealthCare|||20200508132
 "\n"+
 "OBR|1|0002600786||052782^RXPERNA^^0002600786^ESQUERDA - TESTE||20200508132200||20200508132200|||||teste|||||||||||CR|||||||||||||||||||||||||"
 
-// min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor(Math.random() * (max - min)) + min;
+cron.schedule('* * * * *', () => {
 
+    console.log('RODANDO CARGA');
 
-// cron.schedule('* * * * *', () => {
-
-    // PEGAR AS UNIDADES E PARA CADA UMA PROCESSAR STATUS PARA DE 0 a 100 leitos
-
-    console.log('running a task every minute');
     conf.unidades.forEach((element: any) => {
         for (let index = 0; index < conf.quantidadeLeitos; index++) {
             const leitoDisponivel = Math.random() > 0.5;
             const arquivoLeito : String = leitoDisponivel ? adtFileActive : adtFileInaActive;
             const nomeLeitoReplace = `${conf.nomeLeito}-${element.id}-${index}`
             const arquivoFinal = arquivoLeito.replace('274SI', nomeLeitoReplace);
-            console.log(`Arquivo escrito ${element.path}/${element.id}-${index}`)
-            fs.writeFile(`${element.path}/para_rodar/${element.id}-${index}.txt`, arquivoFinal, (error:any)=>{})
+            const arquivoPath = `${element.path}/para_rodar/${element.id}-${index}.txt`
+            console.log(`Arquivo escrito ${arquivoPath}`);
+            fs.writeFile(arquivoPath, arquivoFinal, (error:any)=>{});
         }
     });
 
-// });
+});

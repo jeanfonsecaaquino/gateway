@@ -1,21 +1,24 @@
 const chokidar = require('chokidar');
 const pipe = require('pipe-functions');
-import fetch from 'cross-fetch';
+const fetch = require('node-fetch');
 
 import { ReadFile } from './readFile/read-file';
 const pathSpace: String = process.env.PATH_SPACE ? String(process.env.PATH_SPACE) : String('/');
 
-// const idUnidade: Number = 1;
-// const pathReader: String = '/Users/jeanaquino/Projects/gateway/arquivos';
-// const pathOk: String = '/Users/jeanaquino/Projects/gateway/arquivos_ok';
-// const pathError: String = '/Users/jeanaquino/Projects/gateway/arquivos_error';
+const idUnidade: Number = 1;
+const basePath: String = '/Users/jeanaquino/Projects/bot_carga/uni1'
+const pathReader: String = `${basePath}/para_rodar`;
+const pathOk: String = `${basePath}/arquivos_ok`;
+const pathError: String = `${basePath}/arquivos_error`;
+const endpoint = 'http://ondetemleito.com.br/api/position'
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = process.env.NODE_TLS_REJECT_UNAUTHORIZED || '0'
 // const endpoint = 'http://10.36.143.177:3111/position'
 
-const idUnidade: Number = Number(process.env.ID_UNIDADE);
-const pathReader: String = String(process.env.PATH_READER);
-const pathOk: String = String(process.env.PATH_OK);
-const pathError: String = String(process.env.PATH_ERROR);
-const endpoint = String(process.env.END_POINT);
+// const idUnidade: Number = Number(process.env.ID_UNIDADE);
+// const pathReader: String = String(process.env.PATH_READER);
+// const pathOk: String = String(process.env.PATH_OK);
+// const pathError: String = String(process.env.PATH_ERROR);
+// const endpoint = String(process.env.END_POINT);
 
 const readFile = new ReadFile(idUnidade);
 enum ERRORS {
@@ -35,11 +38,14 @@ const sendToService = async (object: any) => {
             'Content-Type': 'application/json'
         }
     }
-    return fetch(endpoint, options).then(res => {
+    return fetch(endpoint, options).then((res:any) => {
+        console.log(`RETORNO DO STATUS DA API: ${res.status}`)
         if ([200, 201].includes(res.status)) {
             return { file }
         }
         throw Error(ERRORS.API_ERROR)
+    }).catch((error:any)=>{
+        console.log(error);
     })
 }
 
@@ -101,9 +107,11 @@ console.info('DIRETORIO DE ARQUIVOS PROCESSADOS: ' + pathOk);
 console.info('DIRETORIO DE ARQUIVOS COM ERRO: ' + pathError);
 console.info('ENDEREÇO DO ENDPOINT: ' + endpoint);
 
-chokidar.watch(pathReader).on('add', (file: any) => {
+chokidar.watch(pathReader).on('change', (file: any) => {
     pipe(file, readContent, convertObject, sendToService, success).catch((error: any) => (processError(error, file)))
 });
 
-
+chokidar.watch(pathReader).on('add', (file: any) => {
+    pipe(file, readContent, convertObject, sendToService, success).catch((error: any) => (processError(error, file)))
+});
 

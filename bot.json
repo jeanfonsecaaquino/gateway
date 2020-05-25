@@ -1,12 +1,12 @@
 {
     "idsUnidadeInicial": 1,
     "idsUnidadeFinal": 1,
-    "quantidadeLeitos": 1,
+    "quantidadeLeitos": 20,
     "nomeLeito": "LT-",
     "unidades" : [
         {
             "id": 1,
-            "path": "/Users/jeanaquino/Projects/hospitais/copa"
+            "path": "/Users/jeanaquino/Projects/bot_carga/uni1"
         }
     ]
 }
